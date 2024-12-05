@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -48,7 +47,6 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textSize="16sp"
-            android:text="test@gmail.com"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -74,32 +72,20 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="16sp"
-            android:text="123456"
             android:textColor="@color/black"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/lightBlue"
-        android:text="@string/login"
+        android:text="@string/sign_up"
         android:textSize="18sp"
         android:textColor="@color/white"
         android:padding="12dp"
         android:background="@drawable/rounded_button"
         android:gravity="center"
         android:textAllCaps="false"/>
-
-    <TextView
-        android:id="@+id/signUpPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/dont_have_account"
-        android:textColor="@color/primary"
-        android:textSize="16sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="18dp" />
 
 </LinearLayout>

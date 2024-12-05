@@ -3,18 +3,27 @@ package com.conestoga.ecommerceapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
+
+    private final static String TAG = "LoginActivity";
 
     private EditText emailField;
     private EditText passwordField;
+    private Button btnLogin;
+    private TextView signUpPrompt;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -26,8 +35,19 @@ public class LoginActivity extends AppCompatActivity {
         emailField = findViewById(R.id.emailField);
         passwordField = findViewById(R.id.passwordField);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(v -> loginUser());
+
+        signUpPrompt = findViewById(R.id.signUpPrompt);
+        signUpPrompt.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+
+        String email = getIntent().getStringExtra("email");
+        if (!TextUtils.isEmpty(email)) {
+            emailField.setText(email);
+        }
     }
 
     private void loginUser() {
@@ -46,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
+                        Log.e(TAG, "Login failed: " + Objects.requireNonNull(task.getException()).getMessage());
                         Toast.makeText(this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

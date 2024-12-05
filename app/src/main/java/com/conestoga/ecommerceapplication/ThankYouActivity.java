@@ -31,6 +31,7 @@ public class ThankYouActivity extends AppCompatActivity {
         viewOrdersButton.setOnClickListener(v -> {
             Intent intent = new Intent(ThankYouActivity.this, OrderListActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 }

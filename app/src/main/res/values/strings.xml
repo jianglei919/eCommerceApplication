@@ -55,6 +55,7 @@
     <string name="phone">"Phone Number:  "</string>
     <string name="no_orders">"You have no orders yet! "</string>
     <string name="shop_now">Shop Now</string>
+    <string name="sign_up">Sign Up</string>
 
     <string-array name="payment_methods">
         <item>Credit Card</item>

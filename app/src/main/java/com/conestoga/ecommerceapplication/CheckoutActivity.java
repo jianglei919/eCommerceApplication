@@ -2,6 +2,7 @@ package com.conestoga.ecommerceapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,8 @@ import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Order;
 import com.conestoga.ecommerceapplication.model.PaymentInfo;
 import com.conestoga.ecommerceapplication.utils.FirebaseAuthUtils;
+import com.conestoga.ecommerceapplication.utils.ValidateUtils;
+import com.google.android.gms.common.util.NumberUtils;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,7 +73,6 @@ public class CheckoutActivity extends AppCompatActivity {
 
         cartItemList = (List<CartItem>) getIntent().getSerializableExtra("cartItems");
 
-
         submitOrderButton.setOnClickListener(v -> {
             if (validateFields()) {
                 processOrder();
@@ -99,24 +101,45 @@ public class CheckoutActivity extends AppCompatActivity {
             stateEditText.setError("State is required");
             return false;
         }
-        if (TextUtils.isEmpty(postalCodeEditText.getText())) {
+        String postalCode = postalCodeEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(postalCode)) {
             postalCodeEditText.setError("Postal code is required");
+            return false;
+        }
+        if (!ValidateUtils.isValidPostalCode(postalCode)) {
+            postalCodeEditText.setError("Invalid postal code. Please enter a valid postal code.");
             return false;
         }
         if (TextUtils.isEmpty(phoneEditText.getText())) {
             phoneEditText.setError("Phone number is required");
             return false;
         }
-        if (TextUtils.isEmpty(emailEditText.getText())) {
+        String email = emailEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(email)) {
             emailEditText.setError("Email is required");
             return false;
         }
-        if (TextUtils.isEmpty(cardNumberEditText.getText())) {
+        if (!isValidEmail(email)) {
+            emailEditText.setError("Invalid email address. Please enter a valid email.");
+            return false;
+        }
+        String cardNumber = cardNumberEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(cardNumber)) {
             cardNumberEditText.setError("Card number is required");
             return false;
         }
-        if (TextUtils.isEmpty(cvvEditText.getText())) {
+        if (!ValidateUtils.isValidCardNumber(cardNumber)) {
+            cardNumberEditText.setError("Invalid card number. Please enter 13-19 digit card number.");
+            return false;
+        }
+
+        String cvv = cvvEditText.getText().toString();
+        if (TextUtils.isEmpty(cvv)) {
             cvvEditText.setError("CVV is required");
+            return false;
+        }
+        if (!ValidateUtils.isNumeric(cvv)) {
+            cvvEditText.setError("CVV must be 3 digit numbers");
             return false;
         }
         return true;
@@ -190,5 +213,9 @@ public class CheckoutActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to get current user id. currentId=" + currentUserId);
             }
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
