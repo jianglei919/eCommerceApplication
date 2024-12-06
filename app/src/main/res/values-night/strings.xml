@@ -56,4 +56,7 @@
     <string name="no_orders">"You have no orders yet! "</string>
     <string name="shop_now">Shop Now</string>
     <string name="sign_up">Sign Up</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="home">Home</string>
+    <string name="my_orders">My Orders</string>
 </resources>

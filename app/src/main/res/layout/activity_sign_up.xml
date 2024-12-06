@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/background_image"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="24dp">
 
     <ImageView
@@ -11,33 +11,33 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
-        android:src="@drawable/logo_icon"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_logo" />
 
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_title"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:layout_marginBottom="30dp" />
+        android:text="@string/app_title"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_input"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/mail_icon"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_mail_icon" />
 
         <EditText
             android:id="@+id/emailField"
@@ -46,23 +46,23 @@
             android:layout_weight="1"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_input"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/padlock"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_pad_lock" />
 
         <EditText
             android:id="@+id/passwordField"
@@ -71,21 +71,21 @@
             android:layout_weight="1"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textSize="16sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/lightBlue"
-        android:text="@string/sign_up"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:padding="12dp"
         android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/lightBlue"
         android:gravity="center"
-        android:textAllCaps="false"/>
+        android:padding="12dp"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 </LinearLayout>

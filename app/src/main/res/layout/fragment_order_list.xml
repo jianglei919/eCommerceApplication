@@ -1,22 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
-
-    <!-- 订单列表标题 -->
-    <TextView
-        android:id="@+id/orderListTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:background="@color/lightBlue"
-        android:gravity="center"
-        android:paddingVertical="8dp"
-        android:text="@string/orders"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+    tools:context=".fragment.OrderListFragment">
 
     <!-- 空订单提示 -->
     <LinearLayout
@@ -60,4 +48,5 @@
         android:layout_height="match_parent"
         android:padding="8dp"
         android:visibility="visible" />
-</LinearLayout>
+
+</FrameLayout>

@@ -1,18 +1,22 @@
-package com.conestoga.ecommerceapplication;
+package com.conestoga.ecommerceapplication.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
+import com.conestoga.ecommerceapplication.R;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
 import com.conestoga.ecommerceapplication.enums.OrderStatusType;
 import com.conestoga.ecommerceapplication.manager.CartManager;
@@ -21,15 +25,17 @@ import com.conestoga.ecommerceapplication.model.Order;
 import com.conestoga.ecommerceapplication.model.PaymentInfo;
 import com.conestoga.ecommerceapplication.utils.FirebaseAuthUtils;
 import com.conestoga.ecommerceapplication.utils.ValidateUtils;
-import com.google.android.gms.common.util.NumberUtils;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class CheckoutFragment extends Fragment {
 
-    private final static String TAG = "CheckoutActivity";
+    private final static String TAG = "CartFragment";
+
+    public static final String ARG_CART_ITEMS = "cartItems";
 
     private EditText firstNameEditText;
     private EditText lastNameEditText;
@@ -45,35 +51,62 @@ public class CheckoutActivity extends AppCompatActivity {
     private Spinner paymentOptionsSpinner;
     private Button submitOrderButton;
 
-    private List<CartItem> cartItemList;
+    private List<CartItem> cartItemList = new ArrayList<>();
+
+    public CheckoutFragment() {
+    }
+
+    public static CheckoutFragment newInstance(List<CartItem> cartItemList) {
+        CheckoutFragment fragment = new CheckoutFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CART_ITEMS, (ArrayList<CartItem>) cartItemList);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkout);
 
-        firstNameEditText = findViewById(R.id.firstName);
-        lastNameEditText = findViewById(R.id.lastName);
-        addressEditText = findViewById(R.id.address);
-        unitNumberEditText = findViewById(R.id.unitNumber);
-        cityEditText = findViewById(R.id.city);
-        stateEditText = findViewById(R.id.state);
-        postalCodeEditText = findViewById(R.id.postalCode);
-        phoneEditText = findViewById(R.id.phone);
-        emailEditText = findViewById(R.id.email);
-        cardNumberEditText = findViewById(R.id.cardNumber);
-        cvvEditText = findViewById(R.id.cvv);
-        paymentOptionsSpinner = findViewById(R.id.paymentOptions);
-        submitOrderButton = findViewById(R.id.submitOrderButton);
+        if (getArguments() != null) {
+            cartItemList = (List<CartItem>) getArguments().getSerializable(ARG_CART_ITEMS);
+        }
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_checkout, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        firstNameEditText = view.findViewById(R.id.firstName);
+        lastNameEditText = view.findViewById(R.id.lastName);
+        addressEditText = view.findViewById(R.id.address);
+        unitNumberEditText = view.findViewById(R.id.unitNumber);
+        cityEditText = view.findViewById(R.id.city);
+        stateEditText = view.findViewById(R.id.state);
+        postalCodeEditText = view.findViewById(R.id.postalCode);
+        phoneEditText = view.findViewById(R.id.phone);
+        emailEditText = view.findViewById(R.id.email);
+        cardNumberEditText = view.findViewById(R.id.cardNumber);
+        cvvEditText = view.findViewById(R.id.cvv);
+        paymentOptionsSpinner = view.findViewById(R.id.paymentOptions);
+        submitOrderButton = view.findViewById(R.id.submitOrderButton);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.payment_methods, android.R.layout.simple_spinner_item);
+                getContext(), R.array.payment_methods, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         paymentOptionsSpinner.setAdapter(adapter);
 
-        cartItemList = (List<CartItem>) getIntent().getSerializableExtra("cartItems");
-
         submitOrderButton.setOnClickListener(v -> {
+            // test loadThankYouFragment
+            // loadThankYouFragment();
             if (validateFields()) {
                 processOrder();
             }
@@ -145,12 +178,16 @@ public class CheckoutActivity extends AppCompatActivity {
         return true;
     }
 
+    private boolean isValidEmail(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     private void processOrder() {
         String userId = FirebaseAuthUtils.getCurrentUserId();
         String loginEmail = FirebaseAuthUtils.getCurrentUserLoginEmail();
 
         if (TextUtils.isEmpty(userId) && TextUtils.isEmpty(loginEmail)) {
-            Toast.makeText(this, "Failed to get current user. Try again.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Failed to get current user. Try again.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -188,7 +225,7 @@ public class CheckoutActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(currentUserId)) {
                 ordersRef.child(currentUserId).child(orderId).setValue(order).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
 
                         // Clear the cart and navigate to ThankYouActivity
                         CartManager.getInstance().clearCart();
@@ -202,11 +239,9 @@ public class CheckoutActivity extends AppCompatActivity {
                             }
                         });
 
-                        Intent intent = new Intent(CheckoutActivity.this, ThankYouActivity.class);
-                        startActivity(intent);
-                        finish();
+                        loadThankYouFragment();
                     } else {
-                        Toast.makeText(this, "Failed to place order. Try again.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Failed to place order. Try again.", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
@@ -215,7 +250,13 @@ public class CheckoutActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isValidEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    private void loadThankYouFragment() {
+        requireActivity().runOnUiThread(() -> {
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new ThankYouFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
     }
 }

@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo_icon"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_logo" />
 
 </LinearLayout>

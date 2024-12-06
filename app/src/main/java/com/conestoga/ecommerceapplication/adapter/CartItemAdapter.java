@@ -30,15 +30,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
+public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartViewHolder> {
 
-    private final static String TAG = "CartAdapter";
+    private final static String TAG = "CartItemAdapter";
 
     private List<CartItem> cartItemList;
     private Context context;
     private OnCartChangedListener onCartChangedListener;
 
-    public CartAdapter(List<CartItem> cartItemList, Context context) {
+    public CartItemAdapter(List<CartItem> cartItemList, Context context) {
         this.cartItemList = cartItemList;
         this.context = context;
     }

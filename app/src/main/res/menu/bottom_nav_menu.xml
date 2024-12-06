@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 首页 -->
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title=""
+        android:background="?android:attr/selectableItemBackground"
+        app:showAsAction="ifRoom"
+        app:iconTint="@color/white" />
+
+    <!-- 购物车 -->
+    <item
+        android:id="@+id/nav_cart"
+        android:icon="@drawable/ic_shopping_cart"
+        android:title=""
+        android:background="?android:attr/selectableItemBackground"
+        app:showAsAction="ifRoom"
+        app:iconTint="@color/white" />
+
+    <!-- 我的订单 -->
+    <item
+        android:id="@+id/nav_orders"
+        android:icon="@drawable/ic_shopping_bag"
+        android:title=""
+        android:background="?android:attr/selectableItemBackground"
+        app:showAsAction="ifRoom"
+        app:iconTint="@color/white" />
+
+</menu>

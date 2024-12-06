@@ -1,7 +1,6 @@
 package com.conestoga.ecommerceapplication.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.conestoga.ecommerceapplication.OrderDetailActivity;
 import com.conestoga.ecommerceapplication.R;
+import com.conestoga.ecommerceapplication.listener.OnOrderClickListener;
 import com.conestoga.ecommerceapplication.model.Order;
 import com.conestoga.ecommerceapplication.utils.DateTimeUtils;
 
@@ -19,10 +18,13 @@ import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.OrderViewHolder> {
 
+    private OnOrderClickListener orderClickListener;
+
     private List<Order> orderList;
     private Context context;
 
-    public OrderListAdapter(List<Order> orderList, Context context) {
+    public OrderListAdapter(OnOrderClickListener orderClickListener, List<Order> orderList, Context context) {
+        this.orderClickListener = orderClickListener;
         this.orderList = orderList;
         this.context = context;
     }
@@ -44,9 +46,9 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         holder.orderTimeTextView.append(DateTimeUtils.formatTimestamp(order.getOrderTime()));
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, OrderDetailActivity.class);
-            intent.putExtra("orderData", order);
-            context.startActivity(intent);
+            if (orderClickListener != null) {
+                orderClickListener.onOrderItemClick(order);
+            }
         });
     }
 

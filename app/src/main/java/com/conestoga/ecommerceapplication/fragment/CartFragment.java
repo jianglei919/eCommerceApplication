@@ -1,19 +1,24 @@
-package com.conestoga.ecommerceapplication;
+package com.conestoga.ecommerceapplication.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.conestoga.ecommerceapplication.adapter.CartAdapter;
+import com.conestoga.ecommerceapplication.R;
+import com.conestoga.ecommerceapplication.adapter.CartItemAdapter;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
+import com.conestoga.ecommerceapplication.listener.OnCheckoutClickListener;
 import com.conestoga.ecommerceapplication.manager.CartManager;
 import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Product;
@@ -24,38 +29,58 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
+public class CartFragment extends Fragment {
 
-    private final static String TAG = "CartActivity";
+    private final static String TAG = "CartFragment";
+
+    private OnCheckoutClickListener onCheckoutClickListener;
 
     private RecyclerView recyclerView;
-    private CartAdapter cartAdapter;
-    private List<CartItem> cartItemList;
+    private CartItemAdapter cartItemAdapter;
     private TextView totalPriceText;
     private Button checkoutButton;
 
+    private List<CartItem> cartItemList;
+
+    public CartFragment() {
+    }
+
+    public void setOnCheckoutClickListener(OnCheckoutClickListener listener) {
+        this.onCheckoutClickListener = listener;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        totalPriceText = findViewById(R.id.totalPriceText);
-        checkoutButton = findViewById(R.id.checkoutButton);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartItemList = CartManager.getInstance().getCartItems();
 
         loadCartItems();
+    }
 
-        cartAdapter = new CartAdapter(cartItemList, this);
-        recyclerView.setAdapter(cartAdapter);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_cart, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        totalPriceText = view.findViewById(R.id.totalPriceText);
+        checkoutButton = view.findViewById(R.id.checkoutButton);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        cartItemAdapter = new CartItemAdapter(cartItemList, getContext());
+        recyclerView.setAdapter(cartItemAdapter);
 
         // 设置监听器
-        cartAdapter.setOnCartChangedListener(() -> {
+        cartItemAdapter.setOnCartChangedListener(() -> {
             double totalPrice = calculateTotalPrice();
             updateCheckoutButtonState(totalPrice);
         });
@@ -65,9 +90,9 @@ public class CartActivity extends AppCompatActivity {
         updateCheckoutButtonState(totalPrice);
 
         checkoutButton.setOnClickListener(v -> {
-            Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
-            intent.putExtra("cartItemList", new ArrayList<>(cartItemList));
-            startActivity(intent);
+            if (onCheckoutClickListener != null) {
+                onCheckoutClickListener.onCheckoutClick(cartItemList);
+            }
         });
     }
 
@@ -85,7 +110,7 @@ public class CartActivity extends AppCompatActivity {
                     }
                     updateCheckoutButtonState(calculateTotalPrice());
 
-                    cartAdapter.notifyDataSetChanged();
+                    cartItemAdapter.notifyDataSetChanged();
 
                     Log.e(TAG, "Successful to load cart items. currentUserId=" + currentUserId);
                 }

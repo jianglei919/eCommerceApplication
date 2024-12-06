@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">eCommerceApplication</string>
+    <string name="app_name">Fruit Online</string>
+    <string name="home">Home</string>
     <string name="get_started">Started</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -56,6 +57,8 @@
     <string name="no_orders">"You have no orders yet! "</string>
     <string name="shop_now">Shop Now</string>
     <string name="sign_up">Sign Up</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="my_orders">My Orders</string>
 
     <string-array name="payment_methods">
         <item>Credit Card</item>

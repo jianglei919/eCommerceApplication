@@ -24,4 +24,5 @@
     <!-- 自定义渐变颜色 -->
     <color name="gradientStart">#48687A</color>
     <color name="gradientEnd">#03A9F4</color>
+    <color name="green">#4CAF50</color>
 </resources>

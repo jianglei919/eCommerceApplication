@@ -1,6 +1,8 @@
 package com.conestoga.ecommerceapplication.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -11,6 +13,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class ImageUtils {
+
+    private final static String TAG = "ImageUtils";
 
     private static final FirebaseStorage STORAGE = FirebaseStorage.getInstance();
 
@@ -100,6 +104,15 @@ public class ImageUtils {
      * @param type
      */
     public static void loadImageFromStorage(Context context, ImageView imageView, String imageUri, String name, String type) {
+        if (TextUtils.isEmpty(imageUri)) {
+            // 如果 URI 为空，则加载占位符或默认图片
+            Glide.with(context)
+                    .load(getImageResource(name, type))
+                    .error(getImageResource(name, type))
+                    .into(imageView);
+            Log.e(TAG, "Invalid imageUri: " + imageUri);
+            return;
+        }
         StorageReference storageReference = STORAGE.getReferenceFromUrl(imageUri);
         storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
             // Use Glide loading image

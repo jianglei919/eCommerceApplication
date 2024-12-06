@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="50"
+    android:viewportHeight="48">
+    <!-- 调整path使房子图标居中 -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M24,8L8,24h5v16h10v-10h6v10h10V24h5z" />
+</vector>
