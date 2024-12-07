@@ -14,9 +14,9 @@
     <string name="zero_price">$0.00</string>
     <string name="default_quantity">1</string>
     <string name="remove">Remove</string>
-    <string name="my_cart">My Cart</string>
+    <string name="cart">Cart</string>
     <string name="total_price">Total: $0.00</string>
-    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="checkout">Proceed to Checkout</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="mailing_address">Address</string>
@@ -59,4 +59,7 @@
     <string name="product_detail">Product Detail</string>
     <string name="home">Home</string>
     <string name="my_orders">My Orders</string>
+    <string name="order_success">Order Successfully</string>
+    <string name="order_info">Order Info</string>
+    <string name="logout">Logout</string>
 </resources>

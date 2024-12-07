@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.conestoga.ecommerceapplication.R;
 import com.conestoga.ecommerceapplication.constant.CommonConstant;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
+import com.conestoga.ecommerceapplication.listener.OnProductClickListener;
 import com.conestoga.ecommerceapplication.manager.CartManager;
 import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Product;
@@ -30,15 +31,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartViewHolder> {
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
-    private final static String TAG = "CartItemAdapter";
+    private final static String TAG = "CartAdapter";
 
     private List<CartItem> cartItemList;
     private Context context;
-    private OnCartChangedListener onCartChangedListener;
 
-    public CartItemAdapter(List<CartItem> cartItemList, Context context) {
+    private OnCartChangedListener onCartChangedListener;
+    private OnProductClickListener onProductClickListener;
+
+    public CartAdapter(List<CartItem> cartItemList, Context context) {
         this.cartItemList = cartItemList;
         this.context = context;
     }
@@ -114,6 +117,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
             // 通知购物车状态发生变化
             if (onCartChangedListener != null) {
                 onCartChangedListener.onCartChanged();
+            }
+        });
+
+        holder.itemView.setOnClickListener(view -> {
+            if (onProductClickListener != null) {
+                onProductClickListener.onProductItemClick(cartItem.getProductItem());
             }
         });
     }
@@ -203,5 +212,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
 
     public void setOnCartChangedListener(OnCartChangedListener listener) {
         this.onCartChangedListener = listener;
+    }
+
+    public void setOnProductClickListener(OnProductClickListener onProductClickListener) {
+        this.onProductClickListener = onProductClickListener;
     }
 }

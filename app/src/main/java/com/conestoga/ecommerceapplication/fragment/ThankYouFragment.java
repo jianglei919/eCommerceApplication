@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.conestoga.ecommerceapplication.R;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 
 public class ThankYouFragment extends Fragment {
 
@@ -58,5 +59,13 @@ public class ThankYouFragment extends Fragment {
                     .addToBackStack(null)
                     .commit();
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.order_success));
+        }
     }
 }

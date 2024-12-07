@@ -15,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.conestoga.ecommerceapplication.HomeActivity;
 import com.conestoga.ecommerceapplication.R;
-import com.conestoga.ecommerceapplication.adapter.CartItemAdapter;
+import com.conestoga.ecommerceapplication.adapter.CartAdapter;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
 import com.conestoga.ecommerceapplication.listener.OnCheckoutClickListener;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 import com.conestoga.ecommerceapplication.manager.CartManager;
 import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Product;
@@ -38,7 +40,7 @@ public class CartFragment extends Fragment {
     private OnCheckoutClickListener onCheckoutClickListener;
 
     private RecyclerView recyclerView;
-    private CartItemAdapter cartItemAdapter;
+    private CartAdapter cartAdapter;
     private TextView totalPriceText;
     private Button checkoutButton;
 
@@ -76,11 +78,13 @@ public class CartFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        cartItemAdapter = new CartItemAdapter(cartItemList, getContext());
-        recyclerView.setAdapter(cartItemAdapter);
+        cartAdapter = new CartAdapter(cartItemList, getContext());
+        HomeActivity homeActivity = (HomeActivity) requireActivity();
+        cartAdapter.setOnProductClickListener(homeActivity);
+        recyclerView.setAdapter(cartAdapter);
 
         // 设置监听器
-        cartItemAdapter.setOnCartChangedListener(() -> {
+        cartAdapter.setOnCartChangedListener(() -> {
             double totalPrice = calculateTotalPrice();
             updateCheckoutButtonState(totalPrice);
         });
@@ -94,6 +98,14 @@ public class CartFragment extends Fragment {
                 onCheckoutClickListener.onCheckoutClick(cartItemList);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.cart));
+        }
     }
 
     private void loadCartItems() {
@@ -110,9 +122,9 @@ public class CartFragment extends Fragment {
                     }
                     updateCheckoutButtonState(calculateTotalPrice());
 
-                    cartItemAdapter.notifyDataSetChanged();
+                    cartAdapter.notifyDataSetChanged();
 
-                    Log.e(TAG, "Successful to load cart items. currentUserId=" + currentUserId);
+                    Log.i(TAG, "Successful to load cart items. currentUserId=" + currentUserId);
                 }
 
                 @Override

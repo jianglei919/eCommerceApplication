@@ -18,14 +18,14 @@ import com.conestoga.ecommerceapplication.utils.ImageUtils;
 
 import java.util.List;
 
-public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdapter.ProductDetailViewHolder> {
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductDetailViewHolder> {
 
     private OnProductClickListener onProductClickListener;
 
     private List<Product> productList;
     private Context context;
 
-    public ProductDetailAdapter(OnProductClickListener onProductClickListener, List<Product> productList, Context context) {
+    public ProductListAdapter(OnProductClickListener onProductClickListener, List<Product> productList, Context context) {
         this.onProductClickListener = onProductClickListener;
         this.productList = productList;
         this.context = context;

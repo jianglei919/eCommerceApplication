@@ -41,7 +41,7 @@
             android:background="@drawable/rounded_button"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            android:text="@string/proceed_to_checkout"
+            android:text="@string/checkout"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />

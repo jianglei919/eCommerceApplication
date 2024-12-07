@@ -30,7 +30,7 @@ public class CartManager {
             Product productItem = cartItem.getProductItem();
             if (productItem.getProductId().equals(item.getProductItem().getProductId())) {
                 // If the product exist, add quantity
-                cartItem.setTotalQuantity(cartItem.getProductItem().getQuantity() + item.getProductItem().getQuantity());
+                cartItem.setTotalQuantity(cartItem.getTotalQuantity() + item.getTotalQuantity());
                 return;
             }
         }

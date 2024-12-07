@@ -15,6 +15,7 @@
     <color name="lightBlue">#03A9F4</color> <!-- 浅蓝色，用于次要按钮或链接 -->
     <color name="lightGray">#F5F5F5</color> <!-- 浅灰色，用于背景分隔或禁用状态 -->
     <color name="darkBlue">#03A9FF</color> <!-- 深浅蓝色过渡，用于高亮或特殊按钮 -->
+    <color name="deepGray">#212121</color> <!-- 深灰色 -->
 
     <!-- 状态和交互颜色 -->
     <color name="success">#4CAF50</color> <!-- 成功状态的绿色 -->

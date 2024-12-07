@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.conestoga.ecommerceapplication.HomeActivity;
 import com.conestoga.ecommerceapplication.R;
-import com.conestoga.ecommerceapplication.adapter.ProductDetailAdapter;
+import com.conestoga.ecommerceapplication.adapter.ProductListAdapter;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Order;
 import com.conestoga.ecommerceapplication.model.PaymentInfo;
@@ -36,7 +37,6 @@ public class OrderDetailFragment extends Fragment {
     private TextView orderIdTextView;
     private TextView orderTimeTextView;
     private TextView orderStatusTextView;
-    private TextView totalPriceTextView2;
     private TextView paymentNameTextView;
     private TextView paymentAddressTextView;
     private TextView paymentEmailTextView;
@@ -44,7 +44,7 @@ public class OrderDetailFragment extends Fragment {
     private TextView totalPriceTextView;
     private RecyclerView productRecyclerView;
 
-    private ProductDetailAdapter productDetailAdapter; // Adapter for product list
+    private ProductListAdapter productListAdapter; // Adapter for product list
 
     private List<Product> productList = new ArrayList<>();
     private Order order;
@@ -84,7 +84,6 @@ public class OrderDetailFragment extends Fragment {
         orderIdTextView = view.findViewById(R.id.orderId);
         orderTimeTextView = view.findViewById(R.id.orderTime);
         orderStatusTextView = view.findViewById(R.id.orderStatus);
-        totalPriceTextView2 = view.findViewById(R.id.totalPrice2);
         paymentNameTextView = view.findViewById(R.id.paymentName);
         paymentAddressTextView = view.findViewById(R.id.paymentAddress);
         paymentEmailTextView = view.findViewById(R.id.paymentEmail);
@@ -97,13 +96,12 @@ public class OrderDetailFragment extends Fragment {
             orderIdTextView.append(order.getOrderId());
             orderTimeTextView.append(DateTimeUtils.formatTimestamp(order.getOrderTime()));
             orderStatusTextView.append(order.getStatus());
-            totalPriceTextView2.append(String.format("$%.2f", order.getTotalPrice()));
 
             // Populate payment info
             PaymentInfo paymentInfo = order.getPaymentInfo();
             if (paymentInfo != null) {
                 paymentNameTextView.append(paymentInfo.getFirstName() + " " + paymentInfo.getLastName());
-                paymentAddressTextView.append(paymentInfo.getAddress() + ", " + paymentInfo.getCity() + ", " + paymentInfo.getState() + " " + paymentInfo.getPostalCode());
+                paymentAddressTextView.append(paymentInfo.getUnitNumber() + " " + paymentInfo.getAddress() + ", " + paymentInfo.getCity() + ", " + paymentInfo.getState() + " " + paymentInfo.getPostalCode());
                 paymentEmailTextView.append(paymentInfo.getEmail());
                 paymentPhoneTextView.append(paymentInfo.getPhone());
             }
@@ -118,11 +116,19 @@ public class OrderDetailFragment extends Fragment {
             }
             productRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             HomeActivity activity = (HomeActivity) requireActivity();
-            productDetailAdapter = new ProductDetailAdapter(activity, productList, getContext());
-            productRecyclerView.setAdapter(productDetailAdapter);
+            productListAdapter = new ProductListAdapter(activity, productList, getContext());
+            productRecyclerView.setAdapter(productListAdapter);
 
             // Set total price
             totalPriceTextView.append(String.format("$%.2f", order.getTotalPrice()));
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.order_details));
         }
     }
 }

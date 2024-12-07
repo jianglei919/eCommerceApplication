@@ -5,18 +5,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class FirebaseAuthUtils {
 
-    static FirebaseUser CURRENT_USER = FirebaseAuth.getInstance().getCurrentUser();
-
     public static String getCurrentUserId() {
-        if (CURRENT_USER != null) {
-            return CURRENT_USER.getUid();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            return currentUser.getUid();
         }
         return null;
     }
 
     public static String getCurrentUserLoginEmail() {
-        if (CURRENT_USER != null) {
-            return CURRENT_USER.getEmail();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            return currentUser.getEmail();
         }
         return null;
     }

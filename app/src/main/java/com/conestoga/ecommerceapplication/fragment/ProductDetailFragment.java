@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.conestoga.ecommerceapplication.R;
 import com.conestoga.ecommerceapplication.constant.CommonConstant;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 import com.conestoga.ecommerceapplication.manager.CartManager;
 import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Product;
@@ -136,5 +137,13 @@ public class ProductDetailFragment extends Fragment {
 
             Toast.makeText(getContext(), quantity + " " + product.getProductName() + " added to cart", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.product_detail));
+        }
     }
 }

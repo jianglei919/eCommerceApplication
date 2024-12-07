@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.conestoga.ecommerceapplication.HomeActivity;
 import com.conestoga.ecommerceapplication.R;
-import com.conestoga.ecommerceapplication.adapter.ProductDetailAdapter;
+import com.conestoga.ecommerceapplication.adapter.ProductListAdapter;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 import com.conestoga.ecommerceapplication.model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,7 +32,7 @@ public class ProductListFragment extends Fragment {
     private final static String TAG = "ProductListFragment";
 
     private RecyclerView recyclerView;
-    private ProductDetailAdapter adapter;
+    private ProductListAdapter adapter;
 
     private List<Product> productList = new ArrayList<>();
 
@@ -60,9 +61,17 @@ public class ProductListFragment extends Fragment {
 
         // Pass OnProductClickListener from Activity to Adapter
         HomeActivity activity = (HomeActivity) requireActivity();
-        adapter = new ProductDetailAdapter(activity, productList, requireContext());
+        adapter = new ProductListAdapter(activity, productList, requireContext());
 
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.products));
+        }
     }
 
     private void loadProducts() {

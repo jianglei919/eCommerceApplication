@@ -20,6 +20,7 @@ import com.conestoga.ecommerceapplication.HomeActivity;
 import com.conestoga.ecommerceapplication.R;
 import com.conestoga.ecommerceapplication.adapter.OrderListAdapter;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 import com.conestoga.ecommerceapplication.model.Order;
 import com.conestoga.ecommerceapplication.utils.FirebaseAuthUtils;
 import com.google.firebase.database.DataSnapshot;
@@ -81,6 +82,14 @@ public class OrderListFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.orders));
+        }
+    }
+
     private void loadOrders() {
         DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference(CollectionName.ORDERS.getName());
         String currentUserId = FirebaseAuthUtils.getCurrentUserId();
@@ -105,7 +114,7 @@ public class OrderListFragment extends Fragment {
                     showOrderRecyclerView();
                 }
 
-                Log.e(TAG, "Successful to load orders. currentUserId=" + currentUserId);
+                Log.i(TAG, "Successful to load orders. currentUserId=" + currentUserId);
             }
 
             @Override

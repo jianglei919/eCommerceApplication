@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.conestoga.ecommerceapplication.utils.FirebaseAuthUtils;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // 获取从注册页面传递过来的邮箱
         String email = getIntent().getStringExtra("email");
         if (!TextUtils.isEmpty(email)) {
             emailField.setText(email);
@@ -62,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        Log.i(TAG, "Login successful! currentUserId=" + FirebaseAuthUtils.getCurrentUserId());
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();

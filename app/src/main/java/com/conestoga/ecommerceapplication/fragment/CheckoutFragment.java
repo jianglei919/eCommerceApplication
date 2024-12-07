@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.conestoga.ecommerceapplication.R;
 import com.conestoga.ecommerceapplication.enums.CollectionName;
 import com.conestoga.ecommerceapplication.enums.OrderStatusType;
+import com.conestoga.ecommerceapplication.listener.ToolbarTitleListener;
 import com.conestoga.ecommerceapplication.manager.CartManager;
 import com.conestoga.ecommerceapplication.model.CartItem;
 import com.conestoga.ecommerceapplication.model.Order;
@@ -111,6 +112,14 @@ public class CheckoutFragment extends Fragment {
                 processOrder();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof ToolbarTitleListener) {
+            ((ToolbarTitleListener) getActivity()).updateToolbarTitle(getString(R.string.checkout));
+        }
     }
 
     private boolean validateFields() {

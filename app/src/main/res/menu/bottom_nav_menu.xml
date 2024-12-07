@@ -5,28 +5,37 @@
     <!-- 首页 -->
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:title=""
         android:background="?android:attr/selectableItemBackground"
-        app:showAsAction="ifRoom"
-        app:iconTint="@color/white" />
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom|withText" />
 
     <!-- 购物车 -->
     <item
         android:id="@+id/nav_cart"
-        android:icon="@drawable/ic_shopping_cart"
-        android:title=""
         android:background="?android:attr/selectableItemBackground"
-        app:showAsAction="ifRoom"
-        app:iconTint="@color/white" />
+        android:icon="@drawable/ic_shopping_cart"
+        android:title="@string/cart"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom|withText" />
 
     <!-- 我的订单 -->
     <item
         android:id="@+id/nav_orders"
-        android:icon="@drawable/ic_shopping_bag"
-        android:title=""
         android:background="?android:attr/selectableItemBackground"
-        app:showAsAction="ifRoom"
-        app:iconTint="@color/white" />
+        android:icon="@drawable/ic_shopping_bag"
+        android:title="@string/orders"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom|withText" />
+
+    <!-- 退出 -->
+    <item
+        android:id="@+id/nav_logout"
+        android:background="?android:attr/selectableItemBackground"
+        android:icon="@drawable/ic_login_out"
+        android:title="@string/logout"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom|withText" />
 
 </menu>
