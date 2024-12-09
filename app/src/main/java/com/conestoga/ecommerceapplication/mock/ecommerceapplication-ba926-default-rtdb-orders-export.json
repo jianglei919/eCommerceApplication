@@ -1,0 +1,266 @@
+{
+  "LNnfdy1EdQZB1H0h3jC9jsVNu4B3": {
+    "-OD7lH1FLWyInY7pP8v9": {
+      "loginEmail": "test@gmail.com",
+      "orderId": "-OD7lH1FLWyInY7pP8v9",
+      "orderTime": 1733166439873,
+      "paymentInfo": {
+        "address": "3",
+        "cardNumber": "111",
+        "city": "5",
+        "cvv": "111",
+        "email": "9",
+        "firstName": "1",
+        "lastName": "2",
+        "paymentMethod": "Debit Card",
+        "phone": "8",
+        "postalCode": "7",
+        "state": "6",
+        "unitNumber": "4"
+      },
+      "productItemList": [
+        {
+          "productItem": {
+            "description": "Fairtrade Organic Banana, Sold in singles, 0.15 - 0.24 kg",
+            "price": 0.52,
+            "productId": "2",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_banana_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_banana_thumbnail.jpg",
+            "productName": "Banana",
+            "quantity": 1,
+            "store": "Walmart Grocery"
+          },
+          "totalPrice": 1.56,
+          "totalQuantity": 3
+        }
+      ],
+      "status": "Pending",
+      "totalPrice": 0.52
+    },
+    "-ODOuKRUldsT1S336oCu": {
+      "loginEmail": "test@gmail.com",
+      "orderId": "-ODOuKRUldsT1S336oCu",
+      "orderTime": 1733454024163,
+      "paymentInfo": {
+        "address": "Helena Feasby St",
+        "cardNumber": "1178752870741376",
+        "city": "Kitchener",
+        "cvv": "232",
+        "email": "ljiang4144@conestogac.on.ca",
+        "firstName": "LEI",
+        "lastName": "JIANG",
+        "paymentMethod": "Debit Card",
+        "phone": "5197780919",
+        "postalCode": "N2E 4L5",
+        "state": "ON",
+        "unitNumber": "88"
+      },
+      "productItemList": [
+        {
+          "productItem": {
+            "description": "Apple, Gala, Sold in singles, 0.13 - 0.18 kg",
+            "price": 1.99,
+            "productId": "1",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_apple_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_apple_thumbnail.jpg",
+            "productName": "Apple",
+            "quantity": 1,
+            "store": "Costco wholesale"
+          },
+          "totalPrice": 1.99,
+          "totalQuantity": 1
+        },
+        {
+          "productItem": {
+            "description": "Fairtrade Organic Banana, Sold in singles, 0.15 - 0.24 kg",
+            "price": 0.52,
+            "productId": "2",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_banana_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_banana_thumbnail.jpg",
+            "productName": "Banana",
+            "quantity": 1,
+            "store": "Walmart Grocery"
+          },
+          "totalPrice": 0.52,
+          "totalQuantity": 2
+        },
+        {
+          "productItem": {
+            "description": "Grapes, Red Seedless, 1 Bag, 0.63 - 1.00 kg",
+            "price": 8.57,
+            "productId": "3",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_grape_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_grape_thumbnail.jpg",
+            "productName": "Grape",
+            "quantity": 1,
+            "store": "Foodbasic Grocery"
+          },
+          "totalPrice": 8.57,
+          "totalQuantity": 1
+        },
+        {
+          "productItem": {
+            "description": "Your Fresh Market Clementine, 2 lb",
+            "price": 4.97,
+            "productId": "4",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_thumbnail.jpg",
+            "productName": "Orange",
+            "quantity": 1,
+            "store": "No Frills Grocery"
+          },
+          "totalPrice": 4.97,
+          "totalQuantity": 2
+        },
+        {
+          "productItem": {
+            "description": "Great Value Peach Slices in Fruit Juice from Concentrate, 3lb",
+            "price": 3.47,
+            "productId": "5",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_peach_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_peach_thumbnail.jpg",
+            "productName": "Peach",
+            "quantity": 1,
+            "store": "T&T Supermarket"
+          },
+          "totalPrice": 3.47,
+          "totalQuantity": 1
+        },
+        {
+          "productItem": {
+            "description": "Pears, Bartlett, Sold in singles, 0.17 - 0.20 kg",
+            "price": 1.31,
+            "productId": "6",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pear_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pear_thumbnail.jpg",
+            "productName": "Pear",
+            "quantity": 1,
+            "store": "FreshCo Grocery"
+          },
+          "totalPrice": 1.31,
+          "totalQuantity": 1
+        },
+        {
+          "productItem": {
+            "description": "Dole Pineapple Chunks in Pineapple, 1ea",
+            "price": 2.27,
+            "productId": "7",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pineapple_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pineapple_thumbnail.jpg",
+            "productName": "Pineapple",
+            "quantity": 1,
+            "store": "Zehrs Grocery"
+          },
+          "totalPrice": 2.27,
+          "totalQuantity": 1
+        },
+        {
+          "productItem": {
+            "description": "Watermelon, Mini Seedless, Sold in singles",
+            "price": 4.97,
+            "productId": "8",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_watermelon_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_watermelon_thumbnail.jpg",
+            "productName": "Watermelon",
+            "quantity": 1,
+            "store": "Sobeys Grocery"
+          },
+          "totalPrice": 4.97,
+          "totalQuantity": 1
+        }
+      ],
+      "status": "Pending",
+      "totalPrice": 28.069999999999997
+    },
+    "-ODOvXMs16MiIM5lJ9tJ": {
+      "loginEmail": "test@gmail.com",
+      "orderId": "-ODOvXMs16MiIM5lJ9tJ",
+      "orderTime": 1733454339274,
+      "paymentInfo": {
+        "address": "Grassbourne Ave.",
+        "cardNumber": "244859427328393",
+        "city": "Waterloo",
+        "cvv": "232",
+        "email": "shuang.dong.12@gmail.com",
+        "firstName": "SHUANG",
+        "lastName": "DONG",
+        "paymentMethod": "Debit Card",
+        "phone": "2164489087",
+        "postalCode": "N2R 0S5",
+        "state": "ON",
+        "unitNumber": "80"
+      },
+      "productItemList": [
+        {
+          "productItem": {
+            "description": "Your Fresh Market Clementine, 2 lb",
+            "price": 4.97,
+            "productId": "4",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_thumbnail.jpg",
+            "productName": "Orange",
+            "quantity": 1,
+            "store": "No Frills Grocery"
+          },
+          "totalPrice": 4.97,
+          "totalQuantity": 1
+        }
+      ],
+      "status": "Pending",
+      "totalPrice": 4.97
+    }
+  },
+  "SpUBXDomiuQKsUUeWaL6rlZHRMR2": {
+    "-OD-UKKyz9c1l16U3Sqk": {
+      "loginEmail": "bumblebee919801@gmail.com",
+      "orderId": "-OD-UKKyz9c1l16U3Sqk",
+      "orderTime": 1733027517146,
+      "paymentInfo": {
+        "address": "Grassbourne Ave.",
+        "cardNumber": "1178752870741376",
+        "city": "Kitchener",
+        "cvv": "123",
+        "email": "ljiang4144@conestogac.on.ca",
+        "firstName": "LEI",
+        "lastName": "JIANG",
+        "paymentMethod": "Credit Card",
+        "phone": "5197780919",
+        "postalCode": "N2R 0S5",
+        "state": "ON",
+        "unitNumber": "80"
+      },
+      "productItemList": [
+        {
+          "productItem": {
+            "description": "Grapes, Red Seedless, 1 Bag, 0.63 - 1.00 kg",
+            "price": 8.57,
+            "productId": "3",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_grape_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_grape_thumbnail.jpg",
+            "productName": "Grape",
+            "quantity": 1,
+            "store": "Foodbasic Grocery"
+          },
+          "totalPrice": 17.14,
+          "totalQuantity": 2
+        },
+        {
+          "productItem": {
+            "description": "Your Fresh Market Clementine, 2 lb",
+            "price": 4.97,
+            "productId": "4",
+            "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_detail.jpg",
+            "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_thumbnail.jpg",
+            "productName": "Orange",
+            "quantity": 1,
+            "store": "No Frills Grocery"
+          },
+          "totalPrice": 14.91,
+          "totalQuantity": 3
+        }
+      ],
+      "status": "Pending",
+      "totalPrice": 13.54
+    }
+  }
+}

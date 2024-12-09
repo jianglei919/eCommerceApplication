@@ -1,0 +1,74 @@
+[
+  {
+    "description": "Apple, Gala, Sold in singles, 0.13 - 0.18 kg",
+    "price": 1.99,
+    "productId": "1",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_apple_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_apple_thumbnail.jpg",
+    "productName": "Apple",
+    "store": "Costco wholesale"
+  },
+  {
+    "description": "Fairtrade Organic Banana, Sold in singles, 0.15 - 0.24 kg",
+    "price": 0.52,
+    "productId": "2",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_banana_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_banana_thumbnail.jpg",
+    "productName": "Banana",
+    "store": "Walmart Grocery"
+  },
+  {
+    "description": "Grapes, Red Seedless, 1 Bag, 0.63 - 1.00 kg",
+    "price": 8.57,
+    "productId": "3",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_grape_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_grape_thumbnail.jpg",
+    "productName": "Grape",
+    "store": "Foodbasic Grocery"
+  },
+  {
+    "description": "Your Fresh Market Clementine, 2 lb",
+    "price": 4.97,
+    "productId": "4",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_thumbnail.jpg",
+    "productName": "Orange",
+    "store": "No Frills Grocery"
+  },
+  {
+    "description": "Great Value Peach Slices in Fruit Juice from Concentrate, 3lb",
+    "price": 3.47,
+    "productId": "5",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_peach_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_peach_thumbnail.jpg",
+    "productName": "Peach",
+    "store": "T&T Supermarket"
+  },
+  {
+    "description": "Pears, Bartlett, Sold in singles, 0.17 - 0.20 kg",
+    "price": 1.31,
+    "productId": "6",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pear_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pear_thumbnail.jpg",
+    "productName": "Pear",
+    "store": "FreshCo Grocery"
+  },
+  {
+    "description": "Dole Pineapple Chunks in Pineapple, 1ea",
+    "price": 2.27,
+    "productId": "7",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pineapple_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_pineapple_thumbnail.jpg",
+    "productName": "Pineapple",
+    "store": "Zehrs Grocery"
+  },
+  {
+    "description": "Watermelon, Mini Seedless, Sold in singles",
+    "price": 4.97,
+    "productId": "8",
+    "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_watermelon_detail.jpg",
+    "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_watermelon_thumbnail.jpg",
+    "productName": "Watermelon",
+    "store": "Sobeys Grocery"
+  }
+]

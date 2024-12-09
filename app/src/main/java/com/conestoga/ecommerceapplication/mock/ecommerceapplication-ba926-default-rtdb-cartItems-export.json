@@ -1,0 +1,65 @@
+{
+  "LNnfdy1EdQZB1H0h3jC9jsVNu4B3": [
+    null,
+    {
+      "productItem": {
+        "description": "Apple, Gala, Sold in singles, 0.13 - 0.18 kg",
+        "price": 1.99,
+        "productId": "1",
+        "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_apple_detail.jpg",
+        "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_apple_thumbnail.jpg",
+        "productName": "Apple",
+        "quantity": 1,
+        "store": "Costco wholesale"
+      },
+      "totalPrice": 1.99,
+      "totalQuantity": 3
+    },
+    null,
+    null,
+    {
+      "productItem": {
+        "description": "Your Fresh Market Clementine, 2 lb",
+        "price": 4.97,
+        "productId": "4",
+        "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_detail.jpg",
+        "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_thumbnail.jpg",
+        "productName": "Orange",
+        "quantity": 1,
+        "store": "No Frills Grocery"
+      },
+      "totalPrice": 4.97,
+      "totalQuantity": 1
+    },
+    {
+      "productItem": {
+        "description": "Great Value Peach Slices in Fruit Juice from Concentrate, 3lb",
+        "price": 3.47,
+        "productId": "5",
+        "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_peach_detail.jpg",
+        "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_peach_thumbnail.jpg",
+        "productName": "Peach",
+        "quantity": 1,
+        "store": "T&T Supermarket"
+      },
+      "totalPrice": 10.41,
+      "totalQuantity": 3
+    }
+  ],
+  "wEu6d3mWrSa683YSZ2384maVT3a2": {
+    "4": {
+      "productItem": {
+        "description": "Your Fresh Market Clementine, 2 lb",
+        "price": 4.97,
+        "productId": "4",
+        "productImageDetailUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_detail.jpg",
+        "productImageUrl": "gs://ecommerceapplication-ba926.firebasestorage.app/products/product_orange_thumbnail.jpg",
+        "productName": "Orange",
+        "quantity": 1,
+        "store": "No Frills Grocery"
+      },
+      "totalPrice": 4.97,
+      "totalQuantity": 1
+    }
+  }
+}
