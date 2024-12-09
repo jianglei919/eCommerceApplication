@@ -104,28 +104,37 @@ public class ImageUtils {
      * @param type
      */
     public static void loadImageFromStorage(Context context, ImageView imageView, String imageUri, String name, String type) {
-        if (TextUtils.isEmpty(imageUri)) {
+        try {
+            if (TextUtils.isEmpty(imageUri)) {
+                // 如果 URI 为空，则加载占位符或默认图片
+                Glide.with(context)
+                        .load(getImageResource(name, type))
+                        .error(getImageResource(name, type))
+                        .into(imageView);
+                Log.e(TAG, "Invalid imageUri: " + imageUri);
+                return;
+            }
+            StorageReference storageReference = STORAGE.getReferenceFromUrl(imageUri);
+            storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                // Use Glide loading image
+                Glide.with(context)
+                        .load(uri)
+//                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(8)))
+                        .placeholder(R.drawable.placeholder_image) // loading placeholder image
+                        .error(getImageResource(name, type))
+                        .into(imageView);
+            }).addOnFailureListener(exception -> {
+                // process error
+                Toast.makeText(context, "Failed to load image: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+        } catch (Exception e) {
             // 如果 URI 为空，则加载占位符或默认图片
             Glide.with(context)
                     .load(getImageResource(name, type))
                     .error(getImageResource(name, type))
                     .into(imageView);
-            Log.e(TAG, "Invalid imageUri: " + imageUri);
-            return;
+            Log.e(TAG, "loadImageFromStorage Exception: " + e.getMessage());
         }
-        StorageReference storageReference = STORAGE.getReferenceFromUrl(imageUri);
-        storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
-            // Use Glide loading image
-            Glide.with(context)
-                    .load(uri)
-//                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(8)))
-                    .placeholder(R.drawable.placeholder_image) // loading placeholder image
-                    .error(getImageResource(name, type))
-                    .into(imageView);
-        }).addOnFailureListener(exception -> {
-            // process error
-            Toast.makeText(context, "Failed to load image: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-        });
     }
 
     /**

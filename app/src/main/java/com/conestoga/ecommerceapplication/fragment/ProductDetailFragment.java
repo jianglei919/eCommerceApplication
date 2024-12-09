@@ -79,7 +79,6 @@ public class ProductDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 初始化 UI 组件
         productImageView = view.findViewById(R.id.productImage);
         productNameTextView = view.findViewById(R.id.productName);
         productPriceTextView = view.findViewById(R.id.productPrice);
@@ -94,11 +93,9 @@ public class ProductDetailFragment extends Fragment {
         productDescriptionTextView.setText(product.getDescription());
         productStoreTextView.setText(product.getStore());
 
-        // 加载图片
         ImageUtils.loadImageFromStorage(getContext(), productImageView, product.getProductImageUrl(), product.getProductName(), CommonConstant.IMAGE_DETAIL_TYPE);
 
         addToCartButton.setOnClickListener(v -> {
-            // 点击逻辑
             String quantityStr = quantityInputEditText.getText().toString().trim();
             if (quantityStr.isEmpty() || Integer.parseInt(quantityStr) <= 0) {
                 Toast.makeText(getContext(), "Please enter a valid quantity.", Toast.LENGTH_SHORT).show();
