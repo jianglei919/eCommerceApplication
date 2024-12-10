@@ -1,6 +1,7 @@
 package com.conestoga.ecommerceapplication.fragment;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -152,8 +153,13 @@ public class CheckoutFragment extends Fragment {
             postalCodeEditText.setError("Invalid postal code. Please enter a valid postal code.");
             return false;
         }
-        if (TextUtils.isEmpty(phoneEditText.getText())) {
+        String phone = phoneEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(phone)) {
             phoneEditText.setError("Phone number is required");
+            return false;
+        }
+        if (!ValidateUtils.isNumeric(phone)) {
+            cardNumberEditText.setError("Invalid phone number. Please enter 10 digit phone number.");
             return false;
         }
         String email = emailEditText.getText().toString().trim();
